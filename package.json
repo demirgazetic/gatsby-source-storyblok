@@ -14,6 +14,7 @@
     "test:unit": "npm run test:unit --workspace=lib",
     "test:e2e": "npm run test:e2e --workspace=lib",
     "test:e2e-watch": "npm run test:e2e-watch --workspace=lib",
+    "watch": "nodemon --watch src --exec 'npm run build'",
     "prepare": "husky install"
   },
   "devDependencies": {
@@ -61,5 +62,8 @@
     "tabWidth": 2,
     "semi": true,
     "singleQuote": false
+  },
+  "dependencies": {
+    "p-limit": "^6.0.0"
   }
 }
