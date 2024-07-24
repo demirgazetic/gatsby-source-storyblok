@@ -1,5 +1,5 @@
 let T = !1;
-const _ = [], E = (o) => new Promise((t, e) => {
+const _ = [], E = (n) => new Promise((t, e) => {
   if (typeof window > "u" || (window.storyblokRegisterEvent = (r) => {
     if (window.location === window.parent.location) {
       console.warn("You are not in Draft Mode or in the Visual Editor.");
@@ -9,31 +9,31 @@ const _ = [], E = (o) => new Promise((t, e) => {
   }, document.getElementById("storyblok-javascript-bridge")))
     return;
   const s = document.createElement("script");
-  s.async = !0, s.src = o, s.id = "storyblok-javascript-bridge", s.onerror = (r) => e(r), s.onload = (r) => {
+  s.async = !0, s.src = n, s.id = "storyblok-javascript-bridge", s.onerror = (r) => e(r), s.onload = (r) => {
     _.forEach((i) => i()), T = !0, t(r);
   }, document.getElementsByTagName("head")[0].appendChild(s);
 });
-var P = Object.defineProperty, I = (o, t, e) => t in o ? P(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e, h = (o, t, e) => (I(o, typeof t != "symbol" ? t + "" : t, e), e);
-function j(o) {
-  return !(o !== o || o === 1 / 0 || o === -1 / 0);
+var P = Object.defineProperty, I = (n, t, e) => t in n ? P(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e, h = (n, t, e) => (I(n, typeof t != "symbol" ? t + "" : t, e), e);
+function j(n) {
+  return !(n !== n || n === 1 / 0 || n === -1 / 0);
 }
-function C(o, t, e) {
+function C(n, t, e) {
   if (!j(t))
     throw new TypeError("Expected `limit` to be a finite number");
   if (!j(e))
     throw new TypeError("Expected `interval` to be a finite number");
   const s = [];
   let r = [], i = 0;
-  const n = function() {
+  const o = function() {
     i++;
     const a = setTimeout(function() {
-      i--, s.length > 0 && n(), r = r.filter(function(u) {
+      i--, s.length > 0 && o(), r = r.filter(function(u) {
         return u !== a;
       });
     }, e);
     r.indexOf(a) < 0 && r.push(a);
     const c = s.shift();
-    c.resolve(o.apply(c.self, c.args));
+    c.resolve(n.apply(c.self, c.args));
   }, l = function(...a) {
     const c = this;
     return new Promise(function(u, p) {
@@ -42,7 +42,7 @@ function C(o, t, e) {
         reject: p,
         args: a,
         self: c
-      }), i < t && n();
+      }), i < t && o();
     });
   };
   return l.abort = function() {
@@ -61,7 +61,7 @@ class b {
       page: s
     })), h(this, "delay", (t) => new Promise((e) => setTimeout(e, t))), h(this, "arrayFrom", (t = 0, e) => [...Array(t)].map(e)), h(this, "range", (t = 0, e = t) => {
       const s = Math.abs(e - t) || 0, r = t < e ? 1 : -1;
-      return this.arrayFrom(s, (i, n) => n * r + t);
+      return this.arrayFrom(s, (i, o) => o * r + t);
     }), h(this, "asyncMap", async (t, e) => Promise.all(t.map(e))), h(this, "flatMap", (t = [], e) => t.map(e).reduce((s, r) => [...s, ...r], [])), h(this, "escapeHTML", function(t) {
       const e = {
         "&": "&amp;",
@@ -85,13 +85,13 @@ class b {
     for (const i in t) {
       if (!Object.prototype.hasOwnProperty.call(t, i))
         continue;
-      const n = t[i], l = s ? "" : encodeURIComponent(i);
+      const o = t[i], l = s ? "" : encodeURIComponent(i);
       let a;
-      typeof n == "object" ? a = this.stringify(
-        n,
+      typeof o == "object" ? a = this.stringify(
+        o,
         e ? e + encodeURIComponent("[" + l + "]") : l,
-        Array.isArray(n)
-      ) : a = (e ? e + encodeURIComponent("[" + l + "]") : l) + "=" + encodeURIComponent(n), r.push(a);
+        Array.isArray(o)
+      ) : a = (e ? e + encodeURIComponent("[" + l + "]") : l) + "=" + encodeURIComponent(o), r.push(a);
     }
     return r.join("&");
   }
@@ -101,7 +101,7 @@ class b {
    * @return {String} The base URL of the region
    */
   getRegionURL(t) {
-    const e = "api.storyblok.com", s = "api-us.storyblok.com", r = "app.storyblokchina.cn", i = "api-ap.storyblok.com", n = "api-ca.storyblok.com";
+    const e = "api.storyblok.com", s = "api-us.storyblok.com", r = "app.storyblokchina.cn", i = "api-ap.storyblok.com", o = "api-ca.storyblok.com";
     switch (t) {
       case "us":
         return s;
@@ -110,58 +110,58 @@ class b {
       case "ap":
         return i;
       case "ca":
-        return n;
+        return o;
       default:
         return e;
     }
   }
 }
-const A = function(o, t) {
+const A = function(n, t) {
   const e = {};
-  for (const s in o) {
-    const r = o[s];
+  for (const s in n) {
+    const r = n[s];
     t.indexOf(s) > -1 && r !== null && (e[s] = r);
   }
   return e;
-}, N = (o) => o === "email", M = () => ({
+}, N = (n) => n === "email", L = () => ({
   singleTag: "hr"
-}), L = () => ({
+}), M = () => ({
   tag: "blockquote"
 }), z = () => ({
   tag: "ul"
-}), U = (o) => ({
+}), U = (n) => ({
   tag: [
     "pre",
     {
       tag: "code",
-      attrs: o.attrs
+      attrs: n.attrs
     }
   ]
 }), H = () => ({
   singleTag: "br"
-}), q = (o) => ({
-  tag: `h${o.attrs.level}`
-}), F = (o) => ({
+}), q = (n) => ({
+  tag: `h${n.attrs.level}`
+}), F = (n) => ({
   singleTag: [
     {
       tag: "img",
-      attrs: A(o.attrs, ["src", "alt", "title"])
+      attrs: A(n.attrs, ["src", "alt", "title"])
     }
   ]
-}), B = () => ({
-  tag: "li"
 }), V = () => ({
+  tag: "li"
+}), B = () => ({
   tag: "ol"
 }), J = () => ({
   tag: "p"
-}), D = (o) => ({
+}), D = (n) => ({
   tag: [
     {
       tag: "span",
       attrs: {
         "data-type": "emoji",
-        "data-name": o.attrs.name,
-        emoji: o.attrs.emoji
+        "data-name": n.attrs.name,
+        emoji: n.attrs.emoji
       }
     }
   ]
@@ -177,13 +177,13 @@ const A = function(o, t) {
   tag: "code"
 }), X = () => ({
   tag: "i"
-}), Z = (o) => {
-  if (!o.attrs)
+}), Z = (n) => {
+  if (!n.attrs)
     return {
       tag: ""
     };
-  const t = new b().escapeHTML, e = { ...o.attrs }, { linktype: s = "url" } = o.attrs;
-  if (delete e.linktype, e.href && (e.href = t(o.attrs.href || "")), N(s) && (e.href = `mailto:${e.href}`), e.anchor && (e.href = `${e.href}#${e.anchor}`, delete e.anchor), e.custom) {
+  const t = new b().escapeHTML, e = { ...n.attrs }, { linktype: s = "url" } = n.attrs;
+  if (delete e.linktype, e.href && (e.href = t(n.attrs.href || "")), N(s) && (e.href = `mailto:${e.href}`), e.anchor && (e.href = `${e.href}#${e.anchor}`, delete e.anchor), e.custom) {
     for (const r in e.custom)
       e[r] = e.custom[r];
     delete e.custom;
@@ -196,63 +196,63 @@ const A = function(o, t) {
       }
     ]
   };
-}, tt = (o) => ({
+}, tt = (n) => ({
   tag: [
     {
       tag: "span",
-      attrs: o.attrs
+      attrs: n.attrs
     }
   ]
 }), et = () => ({
   tag: "sub"
 }), st = () => ({
   tag: "sup"
-}), rt = (o) => ({
+}), rt = (n) => ({
   tag: [
     {
       tag: "span",
-      attrs: o.attrs
+      attrs: n.attrs
     }
   ]
-}), it = (o) => {
+}), it = (n) => {
   var t;
-  return (t = o.attrs) != null && t.color ? {
+  return (t = n.attrs) != null && t.color ? {
     tag: [
       {
         tag: "span",
         attrs: {
-          style: `background-color:${o.attrs.color};`
+          style: `background-color:${n.attrs.color};`
         }
       }
     ]
   } : {
     tag: ""
   };
-}, nt = (o) => {
+}, ot = (n) => {
   var t;
-  return (t = o.attrs) != null && t.color ? {
+  return (t = n.attrs) != null && t.color ? {
     tag: [
       {
         tag: "span",
         attrs: {
-          style: `color:${o.attrs.color}`
+          style: `color:${n.attrs.color}`
         }
       }
     ]
   } : {
     tag: ""
   };
-}, ot = {
+}, nt = {
   nodes: {
-    horizontal_rule: M,
-    blockquote: L,
+    horizontal_rule: L,
+    blockquote: M,
     bullet_list: z,
     code_block: U,
     hard_break: H,
     heading: q,
     image: F,
-    list_item: B,
-    ordered_list: V,
+    list_item: V,
+    ordered_list: B,
     paragraph: J,
     emoji: D
   },
@@ -269,9 +269,9 @@ const A = function(o, t) {
     superscript: st,
     anchor: rt,
     highlight: it,
-    textStyle: nt
+    textStyle: ot
   }
-}, at = function(o) {
+}, at = function(n) {
   const t = {
     "&": "&amp;",
     "<": "&lt;",
@@ -279,11 +279,11 @@ const A = function(o, t) {
     '"': "&quot;",
     "'": "&#39;"
   }, e = /[&<>"']/g, s = RegExp(e.source);
-  return o && s.test(o) ? o.replace(e, (r) => t[r]) : o;
+  return n && s.test(n) ? n.replace(e, (r) => t[r]) : n;
 };
-class k {
+class v {
   constructor(t) {
-    h(this, "marks"), h(this, "nodes"), t || (t = ot), this.marks = t.marks || [], this.nodes = t.nodes || [];
+    h(this, "marks"), h(this, "nodes"), t || (t = nt), this.marks = t.marks || [], this.nodes = t.nodes || [];
   }
   addNode(t, e) {
     this.nodes[t] = e;
@@ -326,9 +326,9 @@ class k {
     ), "";
   }
   optimizeImages(t, e) {
-    let s = 0, r = 0, i = "", n = "";
-    typeof e != "boolean" && (typeof e.width == "number" && e.width > 0 && (i += `width="${e.width}" `, s = e.width), typeof e.height == "number" && e.height > 0 && (i += `height="${e.height}" `, r = e.height), (e.loading === "lazy" || e.loading === "eager") && (i += `loading="${e.loading}" `), typeof e.class == "string" && e.class.length > 0 && (i += `class="${e.class}" `), e.filters && (typeof e.filters.blur == "number" && e.filters.blur >= 0 && e.filters.blur <= 100 && (n += `:blur(${e.filters.blur})`), typeof e.filters.brightness == "number" && e.filters.brightness >= -100 && e.filters.brightness <= 100 && (n += `:brightness(${e.filters.brightness})`), e.filters.fill && (e.filters.fill.match(/[0-9A-Fa-f]{6}/g) || e.filters.fill === "transparent") && (n += `:fill(${e.filters.fill})`), e.filters.format && ["webp", "png", "jpeg"].includes(e.filters.format) && (n += `:format(${e.filters.format})`), typeof e.filters.grayscale == "boolean" && e.filters.grayscale && (n += ":grayscale()"), typeof e.filters.quality == "number" && e.filters.quality >= 0 && e.filters.quality <= 100 && (n += `:quality(${e.filters.quality})`), e.filters.rotate && [90, 180, 270].includes(e.filters.rotate) && (n += `:rotate(${e.filters.rotate})`), n.length > 0 && (n = "/filters" + n))), i.length > 0 && (t = t.replace(/<img/g, `<img ${i.trim()}`));
-    const l = s > 0 || r > 0 || n.length > 0 ? `${s}x${r}${n}` : "";
+    let s = 0, r = 0, i = "", o = "";
+    typeof e != "boolean" && (typeof e.width == "number" && e.width > 0 && (i += `width="${e.width}" `, s = e.width), typeof e.height == "number" && e.height > 0 && (i += `height="${e.height}" `, r = e.height), (e.loading === "lazy" || e.loading === "eager") && (i += `loading="${e.loading}" `), typeof e.class == "string" && e.class.length > 0 && (i += `class="${e.class}" `), e.filters && (typeof e.filters.blur == "number" && e.filters.blur >= 0 && e.filters.blur <= 100 && (o += `:blur(${e.filters.blur})`), typeof e.filters.brightness == "number" && e.filters.brightness >= -100 && e.filters.brightness <= 100 && (o += `:brightness(${e.filters.brightness})`), e.filters.fill && (e.filters.fill.match(/[0-9A-Fa-f]{6}/g) || e.filters.fill === "transparent") && (o += `:fill(${e.filters.fill})`), e.filters.format && ["webp", "png", "jpeg"].includes(e.filters.format) && (o += `:format(${e.filters.format})`), typeof e.filters.grayscale == "boolean" && e.filters.grayscale && (o += ":grayscale()"), typeof e.filters.quality == "number" && e.filters.quality >= 0 && e.filters.quality <= 100 && (o += `:quality(${e.filters.quality})`), e.filters.rotate && [90, 180, 270].includes(e.filters.rotate) && (o += `:rotate(${e.filters.rotate})`), o.length > 0 && (o = "/filters" + o))), i.length > 0 && (t = t.replace(/<img/g, `<img ${i.trim()}`));
+    const l = s > 0 || r > 0 || o.length > 0 ? `${s}x${r}${o}` : "";
     return t = t.replace(
       /a.storyblok.com\/f\/(\d+)\/([^.]+)\.(gif|jpg|jpeg|png|tif|tiff|bmp)/g,
       `a.storyblok.com/f/$1/$2.$3/m/${l}`
@@ -341,10 +341,10 @@ class k {
         const g = {
           srcset: (c = e.srcset) == null ? void 0 : c.map((d) => {
             if (typeof d == "number")
-              return `//${p}/m/${d}x0${n} ${d}w`;
+              return `//${p}/m/${d}x0${o} ${d}w`;
             if (typeof d == "object" && d.length === 2) {
-              let v = 0, R = 0;
-              return typeof d[0] == "number" && (v = d[0]), typeof d[1] == "number" && (R = d[1]), `//${p}/m/${v}x${R}${n} ${v}w`;
+              let k = 0, $ = 0;
+              return typeof d[0] == "number" && (k = d[0]), typeof d[1] == "number" && ($ = d[1]), `//${p}/m/${k}x${$}${o} ${k}w`;
             }
           }).join(", "),
           sizes: (u = e.sizes) == null ? void 0 : u.map((d) => d).join(", ")
@@ -377,8 +377,8 @@ class k {
         let r = `<${s.tag}`;
         if (s.attrs)
           for (const i in s.attrs) {
-            const n = s.attrs[i];
-            n !== null && (r += ` ${i}="${n}"`);
+            const o = s.attrs[i];
+            o !== null && (r += ` ${i}="${o}"`);
           }
         return `${r}${e}>`;
       }
@@ -462,15 +462,15 @@ class lt {
       )}`;
     } else
       s = JSON.stringify(this.parameters);
-    const r = new URL(e), i = new AbortController(), { signal: n } = i;
+    const r = new URL(e), i = new AbortController(), { signal: o } = i;
     let l;
     this.timeout && (l = setTimeout(() => i.abort(), this.timeout));
     try {
-      const a = await fetch(`${r}`, {
+      const a = await this.fetch(`${r}`, {
         method: t,
         headers: this.headers,
         body: s,
-        signal: n,
+        signal: o,
         ...this.fetchOptions
       });
       this.timeout && clearTimeout(l);
@@ -504,15 +504,14 @@ class lt {
     });
   }
 }
-var ct = { npm_package_version: "6.6.3" };
 const x = "SB-Agent", w = {
   defaultAgentName: "SB-JS-CLIENT",
   defaultAgentVersion: "SB-Agent-Version",
-  packageVersion: ct.npm_package_version
+  packageVersion: "6.0.0"
 };
 let y = {};
 const m = {};
-class ht {
+class ct {
   /**
    *
    * @param config ISbConfig interface
@@ -521,21 +520,23 @@ class ht {
   constructor(t, e) {
     h(this, "client"), h(this, "maxRetries"), h(this, "throttle"), h(this, "accessToken"), h(this, "cache"), h(this, "helpers"), h(this, "resolveCounter"), h(this, "relations"), h(this, "links"), h(this, "richTextResolver"), h(this, "resolveNestedRelations"), h(this, "stringifiedStoriesCache");
     let s = t.endpoint || e;
-    const r = new b().getRegionURL, i = t.https === !1 ? "http" : "https";
-    t.oauthToken ? s = `${i}://${r(t.region)}/v1` : s = `${i}://${r(t.region)}/v2`;
-    const n = new Headers();
-    if (n.set("Content-Type", "application/json"), n.set("Accept", "application/json"), t.headers)
-      for (const a in t.headers)
-        n.set(a, t.headers[a]);
-    n.has(x) || (n.set(x, w.defaultAgentName), n.set(
+    if (!s) {
+      const o = new b().getRegionURL, l = t.https === !1 ? "http" : "https";
+      t.oauthToken ? s = `${l}://${o(t.region)}/v1` : s = `${l}://${o(t.region)}/v2`;
+    }
+    const r = new Headers();
+    if (r.set("Content-Type", "application/json"), r.set("Accept", "application/json"), t.headers)
+      for (const o in t.headers)
+        r.set(o, t.headers[o]);
+    r.has(x) || (r.set(x, w.defaultAgentName), r.set(
       w.defaultAgentVersion,
       w.packageVersion
     ));
-    let l = 5;
-    t.oauthToken && (n.set("Authorization", t.oauthToken), l = 3), t.rateLimit && (l = t.rateLimit), t.richTextSchema ? this.richTextResolver = new k(t.richTextSchema) : this.richTextResolver = new k(), t.componentResolver && this.setComponentResolver(t.componentResolver), this.maxRetries = t.maxRetries || 5, this.throttle = C(this.throttledRequest, l, 1e3), this.accessToken = t.accessToken || "", this.relations = {}, this.links = {}, this.cache = t.cache || { clear: "manual" }, this.helpers = new b(), this.resolveCounter = 0, this.resolveNestedRelations = t.resolveNestedRelations || !0, this.stringifiedStoriesCache = {}, this.client = new lt({
+    let i = 5;
+    t.oauthToken && (r.set("Authorization", t.oauthToken), i = 3), t.rateLimit && (i = t.rateLimit), t.richTextSchema ? this.richTextResolver = new v(t.richTextSchema) : this.richTextResolver = new v(), t.componentResolver && this.setComponentResolver(t.componentResolver), this.maxRetries = t.maxRetries || 5, this.throttle = C(this.throttledRequest, i, 1e3), this.accessToken = t.accessToken || "", this.relations = {}, this.links = {}, this.cache = t.cache || { clear: "manual" }, this.helpers = new b(), this.resolveCounter = 0, this.resolveNestedRelations = t.resolveNestedRelations || !0, this.stringifiedStoriesCache = {}, this.client = new lt({
       baseURL: s,
       timeout: t.timeout || 0,
-      headers: n,
+      headers: r,
       responseInterceptor: t.responseInterceptor,
       fetch: t.fetch
     });
@@ -551,7 +552,7 @@ class ht {
     });
   }
   parseParams(t) {
-    return t.token || (t.token = this.getToken()), t.cv || (t.cv = m[t.token]), Array.isArray(t.resolve_relations) && (t.resolve_relations = t.resolve_relations.join(",")), t;
+    return t.token || (t.token = this.getToken()), t.cv || (t.cv = m[t.token]), Array.isArray(t.resolve_relations) && (t.resolve_relations = t.resolve_relations.join(",")), typeof t.resolve_relations < "u" && (t.resolve_level = 2), t;
   }
   factoryParamOptions(t, e) {
     return this.helpers.isCDNUrl(t) ? this.parseParams(e) : e;
@@ -569,11 +570,11 @@ class ht {
     return this.client.setFetchOptions(s), this.cacheResponse(r, i);
   }
   async getAll(t, e, s, r) {
-    const i = (e == null ? void 0 : e.per_page) || 25, n = `/${t}`, l = n.split("/"), a = s || l[l.length - 1], c = 1, u = await this.makeRequest(n, e, i, c), p = u.total ? Math.ceil(u.total / i) : 1;
+    const i = (e == null ? void 0 : e.per_page) || 25, o = `/${t}`, l = o.split("/"), a = s || l[l.length - 1], c = 1, u = await this.makeRequest(o, e, i, c), p = u.total ? Math.ceil(u.total / i) : 1;
     this.client.setFetchOptions(r);
     const g = await this.helpers.asyncMap(
       this.helpers.range(c, p),
-      (f) => this.makeRequest(n, e, i, f + 1)
+      (f) => this.makeRequest(o, e, i, f + 1)
     );
     return this.helpers.flatMap(
       [u, ...g],
@@ -593,16 +594,19 @@ class ht {
     return this.client.setFetchOptions(s), Promise.resolve(this.throttle("delete", r, e));
   }
   getStories(t, e) {
-    return this.client.setFetchOptions(e), this.get("cdn/stories", t);
+    return this.client.setFetchOptions(e), this._addResolveLevel(t), this.get("cdn/stories", t);
   }
   getStory(t, e, s) {
-    return this.client.setFetchOptions(s), this.get(`cdn/stories/${t}`, e);
+    return this.client.setFetchOptions(s), this._addResolveLevel(e), this.get(`cdn/stories/${t}`, e);
   }
   getToken() {
     return this.accessToken;
   }
   ejectInterceptor() {
     this.client.eject();
+  }
+  _addResolveLevel(t) {
+    typeof t.resolve_relations < "u" && (t.resolve_level = 2);
   }
   _cleanCopy(t) {
     return JSON.parse(JSON.stringify(t));
@@ -629,22 +633,22 @@ class ht {
     const r = (i) => {
       if (i != null) {
         if (i.constructor === Array)
-          for (let n = 0; n < i.length; n++)
-            r(i[n]);
+          for (let o = 0; o < i.length; o++)
+            r(i[o]);
         else if (i.constructor === Object) {
           if (i._stopResolving)
             return;
-          for (const n in i)
+          for (const o in i)
             (i.component && i._uid || i.type === "link") && (this._insertRelations(
               i,
-              n,
+              o,
               e,
               s
             ), this._insertLinks(
               i,
-              n,
+              o,
               s
-            )), r(i[n]);
+            )), r(i[o]);
         }
       }
     };
@@ -653,17 +657,17 @@ class ht {
   async resolveLinks(t, e, s) {
     let r = [];
     if (t.link_uuids) {
-      const i = t.link_uuids.length, n = [], l = 50;
+      const i = t.link_uuids.length, o = [], l = 50;
       for (let a = 0; a < i; a += l) {
         const c = Math.min(i, a + l);
-        n.push(t.link_uuids.slice(a, c));
+        o.push(t.link_uuids.slice(a, c));
       }
-      for (let a = 0; a < n.length; a++)
+      for (let a = 0; a < o.length; a++)
         (await this.getStories({
           per_page: l,
           language: e.language,
           version: e.version,
-          by_uuids: n[a].join(",")
+          by_uuids: o[a].join(",")
         })).data.stories.forEach(
           (c) => {
             r.push(c);
@@ -681,17 +685,17 @@ class ht {
   async resolveRelations(t, e, s) {
     let r = [];
     if (t.rel_uuids) {
-      const i = t.rel_uuids.length, n = [], l = 50;
+      const i = t.rel_uuids.length, o = [], l = 50;
       for (let a = 0; a < i; a += l) {
         const c = Math.min(i, a + l);
-        n.push(t.rel_uuids.slice(a, c));
+        o.push(t.rel_uuids.slice(a, c));
       }
-      for (let a = 0; a < n.length; a++)
+      for (let a = 0; a < o.length; a++)
         (await this.getStories({
           per_page: l,
           language: e.language,
           version: e.version,
-          by_uuids: n[a].join(","),
+          by_uuids: o[a].join(","),
           excluding_fields: e.excluding_fields
         })).data.stories.forEach((c) => {
           r.push(c);
@@ -716,27 +720,27 @@ class ht {
    */
   async resolveStories(t, e, s) {
     var r, i;
-    let n = [];
-    if (this.links[s] = {}, this.relations[s] = {}, typeof e.resolve_relations < "u" && e.resolve_relations.length > 0 && (typeof e.resolve_relations == "string" && (n = e.resolve_relations.split(",")), await this.resolveRelations(t, e, s)), e.resolve_links && ["1", "story", "url", "link"].indexOf(e.resolve_links) > -1 && ((r = t.links) != null && r.length || (i = t.link_uuids) != null && i.length) && await this.resolveLinks(t, e, s), this.resolveNestedRelations)
+    let o = [];
+    if (this.links[s] = {}, this.relations[s] = {}, typeof e.resolve_relations < "u" && e.resolve_relations.length > 0 && (typeof e.resolve_relations == "string" && (o = e.resolve_relations.split(",")), await this.resolveRelations(t, e, s)), e.resolve_links && ["1", "story", "url", "link"].indexOf(e.resolve_links) > -1 && ((r = t.links) != null && r.length || (i = t.link_uuids) != null && i.length) && await this.resolveLinks(t, e, s), this.resolveNestedRelations)
       for (const l in this.relations[s])
         this.iterateTree(
           this.relations[s][l],
-          n,
+          o,
           s
         );
-    t.story ? this.iterateTree(t.story, n, s) : t.stories.forEach((l) => {
-      this.iterateTree(l, n, s);
+    t.story ? this.iterateTree(t.story, o, s) : t.stories.forEach((l) => {
+      this.iterateTree(l, o, s);
     }), this.stringifiedStoriesCache = {}, delete this.links[s], delete this.relations[s];
   }
   async cacheResponse(t, e, s) {
     (typeof s > "u" || !s) && (s = 0);
     const r = this.helpers.stringify({ url: t, params: e }), i = this.cacheProvider();
     if (this.cache.clear === "auto" && e.version === "draft" && await this.flushCache(), e.version === "published" && t != "/cdn/spaces/me") {
-      const n = await i.get(r);
-      if (n)
-        return Promise.resolve(n);
+      const o = await i.get(r);
+      if (o)
+        return Promise.resolve(o);
     }
-    return new Promise(async (n, l) => {
+    return new Promise(async (o, l) => {
       var a;
       try {
         const c = await this.throttle("get", t, e);
@@ -750,10 +754,10 @@ class ht {
           const p = this.resolveCounter = ++this.resolveCounter % 1e3;
           await this.resolveStories(u.data, e, `${p}`);
         }
-        return e.version === "published" && t != "/cdn/spaces/me" && await i.set(r, u), u.data.cv && e.token && (e.version === "draft" && m[e.token] != u.data.cv && await this.flushCache(), m[e.token] = e.cv ? e.cv : u.data.cv), n(u);
+        return e.version === "published" && t != "/cdn/spaces/me" && await i.set(r, u), u.data.cv && e.token && (e.version === "draft" && m[e.token] != u.data.cv && await this.flushCache(), m[e.token] = e.cv ? e.cv : u.data.cv), o(u);
       } catch (c) {
         if (c.response && c.status === 429 && (s = s ? s + 1 : 0, s < this.maxRetries))
-          return console.log(`Hit rate limit. Retrying in ${s} seconds.`), await this.helpers.delay(1e3 * s), this.cacheResponse(t, e, s).then(n).catch(l);
+          return console.log(`Hit rate limit. Retrying in ${s} seconds.`), await this.helpers.delay(1e3 * s), this.cacheResponse(t, e, s).then(o).catch(l);
         l(c);
       }
     });
@@ -769,6 +773,9 @@ class ht {
   }
   setCacheVersion(t) {
     this.accessToken && (m[this.accessToken] = t);
+  }
+  clearCacheVersion() {
+    this.accessToken && (m[this.accessToken] = 0);
   }
   cacheProvider() {
     switch (this.cache.type) {
@@ -808,24 +815,24 @@ class ht {
     }
   }
   async flushCache() {
-    return await this.cacheProvider().flush(), this;
+    return await this.cacheProvider().flush(), this.clearCacheVersion(), this;
   }
 }
-const pt = (o = {}) => {
-  const { apiOptions: t } = o;
+const ut = (n = {}) => {
+  const { apiOptions: t } = n;
   if (!t.accessToken) {
     console.error(
       "You need to provide an access token to interact with Storyblok API. Read https://www.storyblok.com/docs/api/content-delivery#topics/authentication"
     );
     return;
   }
-  return { storyblokApi: new ht(t) };
-}, dt = (o) => {
-  if (typeof o != "object" || typeof o._editable > "u")
+  return { storyblokApi: new ct(t) };
+}, pt = (n) => {
+  if (typeof n != "object" || typeof n._editable > "u")
     return {};
   try {
     const t = JSON.parse(
-      o._editable.replace(/^<!--#storyblok#/, "").replace(/-->$/, "")
+      n._editable.replace(/^<!--#storyblok#/, "").replace(/-->$/, "")
     );
     return t ? {
       "data-blok-c": JSON.stringify(t),
@@ -835,43 +842,43 @@ const pt = (o = {}) => {
     return {};
   }
 };
-let $, S = "https://app.storyblok.com/f/storyblok-v2-latest.js";
-const gt = (o, t, e = {}) => {
+let R, S = "https://app.storyblok.com/f/storyblok-v2-latest.js";
+const dt = (n, t, e = {}) => {
   var s;
   const r = !(typeof window > "u") && typeof window.storyblokRegisterEvent < "u", i = +new URL((s = window.location) == null ? void 0 : s.href).searchParams.get(
     "_storyblok"
-  ) === o;
+  ) === n;
   if (!(!r || !i)) {
-    if (!o) {
+    if (!n) {
       console.warn("Story ID is not defined. Please provide a valid ID.");
       return;
     }
     window.storyblokRegisterEvent(() => {
-      new window.StoryblokBridge(e).on(["input", "published", "change"], (n) => {
-        n.action === "input" && n.story.id === o ? t(n.story) : (n.action === "change" || n.action === "published") && n.storyId === o && window.location.reload();
+      new window.StoryblokBridge(e).on(["input", "published", "change"], (o) => {
+        o.action === "input" && o.story.id === n ? t(o.story) : (o.action === "change" || o.action === "published") && o.storyId === n && window.location.reload();
       });
     });
   }
-}, ft = (o = {}) => {
+}, gt = (n = {}) => {
   var t, e;
   const {
     bridge: s,
     accessToken: r,
     use: i = [],
-    apiOptions: n = {},
+    apiOptions: o = {},
     richText: l = {},
     bridgeUrl: a
-  } = o;
-  n.accessToken = n.accessToken || r;
-  const c = { bridge: s, apiOptions: n };
+  } = n;
+  o.accessToken = o.accessToken || r;
+  const c = { bridge: s, apiOptions: o };
   let u = {};
   i.forEach((g) => {
     u = { ...u, ...g(c) };
   }), a && (S = a);
   const p = !(typeof window > "u") && ((e = (t = window.location) == null ? void 0 : t.search) == null ? void 0 : e.includes("_storyblok_tk"));
-  return s !== !1 && p && E(S), $ = new k(l.schema), l.resolver && O($, l.resolver), u;
-}, O = (o, t) => {
-  o.addNode("blok", (e) => {
+  return s !== !1 && p && E(S), R = new v(l.schema), l.resolver && O(R, l.resolver), u;
+}, O = (n, t) => {
+  n.addNode("blok", (e) => {
     let s = "";
     return e.attrs.body.forEach((r) => {
       s += t(r.component, r);
@@ -879,24 +886,24 @@ const gt = (o, t, e = {}) => {
       html: s
     };
   });
-}, ut = (o) => !o || !(o != null && o.content.some((t) => t.content || t.type === "blok" || t.type === "horizontal_rule")), mt = (o, t, e) => {
-  let s = e || $;
+}, ht = (n) => !n || !(n != null && n.content.some((t) => t.content || t.type === "blok" || t.type === "horizontal_rule")), ft = (n, t, e) => {
+  let s = e || R;
   if (!s) {
     console.error(
       "Please initialize the Storyblok SDK before calling the renderRichText function"
     );
     return;
   }
-  return ut(o) ? "" : (t && (s = new k(t.schema), t.resolver && O(s, t.resolver)), s.render(o));
+  return ht(n) ? "" : (t && (s = new v(t.schema), t.resolver && O(s, t.resolver)), s.render(n));
 };
 export {
-  k as RichTextResolver,
-  ot as RichTextSchema,
-  pt as apiPlugin,
-  ut as isRichTextEmpty,
-  gt as registerStoryblokBridge,
-  mt as renderRichText,
-  dt as storyblokEditable,
-  ft as storyblokInit,
-  gt as useStoryblokBridge
+  v as RichTextResolver,
+  nt as RichTextSchema,
+  ut as apiPlugin,
+  ht as isRichTextEmpty,
+  dt as registerStoryblokBridge,
+  ft as renderRichText,
+  pt as storyblokEditable,
+  gt as storyblokInit,
+  dt as useStoryblokBridge
 };
